@@ -1,35 +1,24 @@
-import { CHANGE_INPUT_VALUE, ADD_ITEM, DELETE_ITEM, GET_INIT, GET_LIST_SAGA } from "./actionTypes";
+import { CHANGE_INPUT_VALUE, DELETE_ITEM_ACTION, ADD_ITEM, GEI_INIT_LIST, INIT_DATA } from './actionTypes'
 
-
-export const getInputChangeAction = value => ({
+export const handleInputChangeAction = value => ({
   type: CHANGE_INPUT_VALUE,
-  value
+  inputValue: value
 })
 
-export const getAddItemAction = () => ({
+export const handleAddItemAction = () => ({
   type: ADD_ITEM
 })
 
-export const getDeleteItemAction = index => ({
-  type: DELETE_ITEM,
+export const handleDeleteItemAction = index => ({
+  type: DELETE_ITEM_ACTION,
   index
 })
 
-export const getInitListAction = list => ({
-  type: GET_INIT,
-  list
+export const getInitList = () => ({
+  type: GEI_INIT_LIST
 })
 
-export const getInitJsonSaga = () => ({
-  type: GET_LIST_SAGA
+export const initListAction = data => ({
+  type: INIT_DATA,
+  data
 })
-
-// 把异步请求放在 actionCreactors 里
-// export const getTodoList = () => {
-//   return (dispatch) => {
-//     axios.get('/index/recommend.json').then( res => {
-//       const action = getInitListAction(res.data.list)
-//       dispatch(action)
-//     })
-//   }
-// }

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
+import "antd/dist/antd.css";
+import TodoList from './components/todolist'
 
-import TodoList from './components/todoList/todolist'
+import store from './store'
+import { getInitList } from './store/actionCreators'
 
 class App extends Component {
   render() {
@@ -12,6 +15,11 @@ class App extends Component {
         </header>
       </div>
     );
+  }
+
+  componentDidMount() {
+    const action = getInitList()
+    store.dispatch(action)
   }
 }
 

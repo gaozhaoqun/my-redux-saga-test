@@ -1,20 +1,21 @@
 import { put, takeEvery } from 'redux-saga/effects'
-import { GET_LIST_SAGA } from './actionTypes'
-import { getInitListAction } from './actionCreators'
+import { GEI_INIT_LIST } from './actionTypes'
+import { initListAction } from './actionCreators'
 import axios from 'axios'
 
-function* getInitList() {
+function* fetchUser() {
   try {
-    const res = yield axios.get('/index/recommend.json')
-    const action = getInitListAction(res.data.list)
+    const res = yield axios.get('https://easy-mock.com/mock/5ca8bbd9a0050b65627b5722/reactmock/reactmock')
+    const list = res.data
+    const action = initListAction(list)
     yield put(action)
-  } catch {
-    console.log('请求失败')
+  } catch (e) {
+     console.log(e.message)
   }
 }
 
 function* mySaga() {
-  yield takeEvery(GET_LIST_SAGA, getInitList);
+  yield takeEvery(GEI_INIT_LIST, fetchUser);
 }
 
 export default mySaga;
