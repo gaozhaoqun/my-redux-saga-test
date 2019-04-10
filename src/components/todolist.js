@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux'  // 引入第二个核心组件 connect, 
 import { handleInputChangeAction, handleAddItemAction, handleDeleteItemAction } from '../store/actionCreators'
 import { Input, Button, List, Alert } from 'antd'
 
@@ -36,6 +36,8 @@ const Todolist = props => {
   )
 }
 
+
+// 映射store里的数据 到 prop上, mapStateToProps方法就是容器组件向store声明需要的state的地方
 const mapStateToProps = state => {
   return {
     inputValue: state.inputValue,
@@ -43,6 +45,8 @@ const mapStateToProps = state => {
   }
 }
 
+
+// mapDispatchToProps用于建立组件跟store.dispatch的映射关系,可以是一个object，也可以传入函数 
 const mapDispatchToProps = dispatch => {
   return {
     // 派发action的函数
